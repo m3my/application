@@ -8,11 +8,19 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope, Game, $routeParams, $firebase) {
-    console.log('Hey' + $routeParams.id);
-    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id);
-    $firebase(ref).$asObject().$bindTo($scope, 'game');
-    // $scope.game.flippedCards = [];
+  .controller('GameCtrl', function ($scope, $routeParams, $firebase) {
+
+    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id + '/players');
+    $scope.players = $firebase(ref).$asArray();
+
+    $scope.players.$loaded()
+      .then(function (x) {
+        if (x.length < 2) {
+          x.$add(angular.extend($scope.user, { scores: 0 }));
+        } else {
+          $scope.app.error = 'Sorry. All seats are already taken (';
+        }
+      });
 
     var ref = new Firebase('https://popping-heat-9121.firebaseio.com/movies');
     var movies = $firebase(ref).$asArray();
@@ -34,5 +42,4 @@ angular.module('movieMemoryApp')
       $scope.game.flippedCards = _.where(cards, { isFlipped: true });
     }, true);
 
-    $scope.data = Game;
   });

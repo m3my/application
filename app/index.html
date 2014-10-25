@@ -16,13 +16,14 @@
     <link rel="stylesheet" href="styles/big-card.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="movieMemoryApp">
+  <body ng-app="movieMemoryApp" ng-controller="ApplicationCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
     <div class="container-fluid">
+      <div class="alert alert-warning" ng-if="app.error"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.error"></span></div>
       <div ng-view=""></div>
     </div>
 
@@ -84,6 +85,9 @@
         <script src="scripts/directives/background_image.js"></script>
         <script src="scripts/services/firebase.js"></script>
         <script src="scripts/filters/partition.js"></script>
+        <script src="scripts/controllers/application.js"></script>
+        <script src="scripts/services/guid.js"></script>
+        <script src="scripts/directives/adjust_height.js"></script>
         <!-- endbuild -->
 </body>
 </html>
