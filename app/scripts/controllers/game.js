@@ -8,7 +8,7 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope) {
+  .controller('GameCtrl', function ($scope, firebase) {
     $scope.cards = [
       [
         { pic: 'http://lorempixel.com/200/200/cats/' },
@@ -43,4 +43,5 @@ angular.module('movieMemoryApp')
         { pic: 'http://lorempixel.com/200/200/cats/' },
       ]
     ];
+    $scope.data = firebase;
   });
