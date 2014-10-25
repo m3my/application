@@ -12,8 +12,10 @@ angular.module('movieMemoryApp')
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
 
+        var diff = attrs.aspectRatioDiff || 0;
+
         var setHeight = function() {
-          var height = parseInt(element.width() * 4.0 / 3.0);
+          var height = parseInt(element.width() * 4.0 / 3.0) - diff;
 
           return element.css("height", height + "px");
         };
