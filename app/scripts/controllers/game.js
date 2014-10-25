@@ -14,6 +14,16 @@ angular.module('movieMemoryApp')
     $firebase(ref).$asObject().$bindTo($scope, 'game');
     // $scope.game.flippedCards = [];
 
+    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/movies');
+    var movies = $firebase(ref).$asArray();
+
+    movies.$loaded(
+        function(x) {
+            console.log('Hey' + x.length);
+        }, function(err) {
+            console.error(err);
+          });
+
     $scope.flipCard = function (card) {
       if ($scope.game.flippedCards.length < 2) {
         card.isFlipped = true;

@@ -11,13 +11,10 @@ angular.module('movieMemoryApp')
   .controller('MainCtrl', function ($scope, Game, $location) {
     var $game = Game.$asArray();
     $scope.play = function () {
-      var cards = [];
-      for (var i = 0; i < 24; ++i) {
-          cards[i] = {movieid: '-J_8Ofofn7owEbjSiC4r', status: 0};
-      }
+      var ref = new Firebase('https://popping-heat-9121.firebaseio.com/movies');
       $game.$add(
           {
-            cards: cards,
+            cards: [],
             players: [{name: 'poop', score: 1}]
           }).then(function(ref) {
         var id = ref.name();
