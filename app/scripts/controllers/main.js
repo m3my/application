@@ -11,7 +11,7 @@ angular.module('movieMemoryApp')
   .controller('MainCtrl', function ($scope, Game, $location) {
     var $game = Game.$asArray();
     $scope.play = function () {
-      $game.$add({cards: 'whatever', players: 'whatever'}).then(function(ref) {
+      $game.$add({cards: 'whatever', players: [{name: 'poop', score: 1}]}).then(function(ref) {
         var id = ref.name();
         $location.path('games/' + id);
       });
