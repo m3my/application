@@ -1,8 +1,11 @@
+.line {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .flip {
   -webkit-perspective: 800;
   position: relative;
   width: 100%;
-  height: 200px;
 }
 .flip .card.flipped {
   -webkit-transform: rotatey(-180deg);

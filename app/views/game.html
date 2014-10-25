@@ -1,14 +1,27 @@
-<div class="row" ng-repeat="row in cards">
-  <div class="col-md-2" ng-repeat="card in row">
-    <div class="flip embed-responsive embed-responsive-3by4">
-      <div class="card" ng-class="{'flipped':isFlipped}" ng-click="isFlipped=!isFlipped">
-        <div class="face front">
-          Front
-        </div>
-        <div class="face back">
-          <img ng-src="{{card.pic}}" class="embed-responsive-item" alt="">
+<div class="row">
+  <div class="col-sm-3">
+    <div class="big-card">Open card</div>
+    <div class="big-card">Open card</div>
+  </div>
+
+  <div class="col-sm-9">
+    <div class="row line" ng-repeat="row in cards">
+      <div class="col-sm-2" ng-repeat="card in row">
+        <div class="flip" aspect-ratio>
+          <div class="card"
+            ng-class="{ flipped: card.isFlipped }"
+            ng-click="card.isFlipped = !card.isFlipped">
+            <div class="face front">
+              Front
+            </div>
+            <div class="face back" background-image="card.pic">
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
