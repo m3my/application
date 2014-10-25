@@ -8,37 +8,11 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope, Game) {
-
-    $scope.game = {};
-    $scope.game.flippedCards = [];
-
-    $scope.game.cards = [
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' },
-      { pic: 'http://lorempixel.com/400/400/cats/' }
-    ];
+  .controller('GameCtrl', function ($scope, Game, $routeParams, $firebase) {
+    console.log('Hey' + $routeParams.id);
+    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id);
+    $firebase(ref).$asObject().$bindTo($scope, 'game');
+    // $scope.game.flippedCards = [];
 
     $scope.flipCard = function (card) {
       if ($scope.game.flippedCards.length < 2) {
