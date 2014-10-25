@@ -1,42 +1,34 @@
 <div class="row">
   <div class="col-sm-3">
     <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
-      <div class="card"
-          ng-class="{ flipped: firstActiveCard.isFlipped }"
-          ng-click="firstActiveCard.isFlipped = !firstActiveCard.isFlipped">
-          <div class="face front">
-            Front
-          </div>
-          <div class="face back">
-            Back
-          </div>
+      <div class="card" ng-class="{ flipped: game.flippedCards[0].isFlipped }">
+        <div class="face front">
+          Front
         </div>
+        <div class="face back" background-image="game.flippedCards[0].pic"></div>
+      </div>
     </div>
     <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
-      <div class="card"
-          ng-class="{ flipped: secondActiveCard.isFlipped }"
-          ng-click="secondActiveCard.isFlipped = !secondActiveCard.isFlipped">
-          <div class="face front">
-            Front
-          </div>
-          <div class="face back" background-image="card.pic">
-          </div>
+      <div class="card" ng-class="{ flipped: game.flippedCards[1].isFlipped }">
+        <div class="face front">
+          Front
         </div>
+        <div class="face back" background-image="game.flippedCards[1].pic"></div>
+      </div>
     </div>
   </div>
 
   <div class="col-sm-9">
-    <div class="row line" ng-repeat="row in cards">
+    <div class="row line" ng-repeat="row in game.cards | partition:6:this">
       <div class="col-sm-2" ng-repeat="card in row">
         <div class="flip" aspect-ratio>
           <div class="card"
-            ng-class="{ flipped: card.isFlipped }"
-            ng-click="card.isFlipped = !card.isFlipped">
-            <div class="face front">
-              Front
-            </div>
-            <div class="face back" background-image="card.pic">
-            </div>
+          ng-class="{ flipped: card.isFlipped }"
+          ng-click="flipCard(card)">
+          <div class="face front">
+            Front
+          </div>
+          <div class="face back" background-image="card.pic">
           </div>
         </div>
       </div>

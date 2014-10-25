@@ -17,15 +17,15 @@ angular.module('movieMemoryApp')
         var setHeight = function() {
           var height = parseInt(element.width() * 4.0 / 3.0) - diff;
 
-          return element.css("height", height + "px");
+          return element.css('height', height + 'px');
         };
 
         $timeout(setHeight);
 
-        angular.element($window).on("resize", setHeight);
+        angular.element($window).on('resize', setHeight);
 
         var cleanup = function() {
-          return angular.element($window).off("resize", setHeight);
+          return angular.element($window).off('resize', setHeight);
         };
 
         element.on('$destroy', cleanup);

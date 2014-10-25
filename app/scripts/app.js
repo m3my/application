@@ -16,6 +16,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'angular-lodash',
     'firebase'
   ])
   .config(function ($routeProvider) {

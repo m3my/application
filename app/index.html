@@ -33,10 +33,6 @@
       </div>
 
       <div ng-view=""></div>
-
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
     </div>
 
 
@@ -61,6 +57,7 @@
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js"></script>
@@ -84,6 +81,7 @@
     <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
     <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/angular-lodash/angular-lodash.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -94,6 +92,7 @@
         <script src="scripts/directives/aspect_ratio.js"></script>
         <script src="scripts/directives/background_image.js"></script>
         <script src="scripts/services/firebase.js"></script>
+        <script src="scripts/filters/partition.js"></script>
         <!-- endbuild -->
 </body>
 </html>

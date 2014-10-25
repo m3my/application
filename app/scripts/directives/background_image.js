@@ -13,16 +13,19 @@ angular.module('movieMemoryApp')
       scope: {
         backgroundImage: '='
       },
-      link: function(scope, iElement) {
-        var src = scope.backgroundImage;
-        var img = $document[0].createElement('img');
-        img.onload = function() {
-          iElement.css({
-            backgroundImage: 'url(' + this.src + ')'
-          });
-          iElement.addClass('loaded');
-        };
-        img.src = src;
+      link: function(scope, element) {
+        scope.$watch('backgroundImage', function () {
+          var src = scope.backgroundImage;
+          var img = $document[0].createElement('img');
+          img.onload = function() {
+            element.css({
+              backgroundImage: 'url(' + this.src + ')',
+              backgroundSize: 'cover'
+            });
+            element.addClass('loaded');
+          };
+          img.src = src;
+        });
       }
     };
   });
