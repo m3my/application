@@ -1,0 +1,68 @@
+$mmyGameTopBarHeight: 88px;
+
+// ---------------------------------------
+// GameTopBar
+// ---------------------------------------
+
+.mmyGameTopBar {
+  .mmyBackBtn {
+    display: table;
+    
+    >div {
+      @extend .mmyTable;  
+      height: $mmyGameTopBarHeight;
+    }    
+  }
+
+  .mmyCenterWrapper {
+    text-align: center;
+  }
+
+  .mmyGameStatusBar {
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .mmyScore, .mmyPlayer, .mmyTimer {
+    float: left;
+    display: table;
+
+    >div {
+      @extend .mmyTable;  
+      height: $mmyGameTopBarHeight;
+    }
+  }
+
+  .mmyScore {
+    min-width: 40px;
+    width: 40px
+  }
+
+  .mmyPlayer {
+    min-width: 120px;
+    width: 120px;
+  }
+
+  .mmyTimer {
+    min-width: 60px;
+    width: 60px;
+  }
+
+  .mmyTable {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.mmyGameBoard {
+  background-color: rgba(0,0,0,0.1);
+
+  .flip {
+    height: 180px;
+  }
+}

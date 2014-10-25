@@ -1,34 +1,98 @@
 <div class="row">
-  <div class="col-sm-3">
-    <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
-      <div class="card" ng-class="{ flipped: game.flippedCards[0].status == 'flipped' }">
-        <div class="face front">
-          Front
+
+  <!-- Game top bar -->
+  <div class="col-sm-12 mmyGameTopBar">
+    <div class="row">
+      <div class="col-sm-3" >
+        <div class="mmyBackBtn">
+          <div>
+            <a href="#" class="btn btn-primary btn-lg active" role="button">Back</a>    
+          </div>
         </div>
-        <div class="face back" background-image="game.flippedCards[0].Cover_Url"></div>
       </div>
-    </div>
-    <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
-      <div class="card" ng-class="{ flipped: game.flippedCards[1].status == 'flipped' }">
-        <div class="face front">
-          Front
+      <div class="col-sm-9">
+        <div class="mmyCenterWrapper">
+          <div class="mmyGameStatusBar">
+            <div class="mmyScore">
+              <div>
+                <p>
+                  2
+                </p>
+              </div>
+            </div>
+            <div class="mmyPlayer">
+              <div>
+                <p>
+                  Stefan
+                </p>
+              </div>
+            </div>
+            <div class="mmyTimer">
+              <div>
+                <p>
+                  3
+                </p>
+              </div>
+            </div>
+           <div class="mmyPlayer">
+              <div>
+                <p>
+                  Stefan
+                </p>
+              </div>
+            </div>          
+            <div class="mmyScore">
+              <div>
+                <p>
+                  2
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="face back" background-image="game.flippedCards[1].Cover_Url"></div>
       </div>
     </div>
   </div>
 
-  <div class="col-sm-9">
-    <div class="row line" ng-repeat="row in game.cards | partition:6:this">
-      <div class="col-sm-2" ng-repeat="card in row">
-        <div class="flip" aspect-ratio>
-          <div class="card"
-          ng-class="{ flipped: card.status == 'flipped' }"
-          ng-click="flipCard(card)">
-          <div class="face front">
-            Front
+  <!-- Game board -->
+  <div class="col-sm-12 mmyGameBoard" adjust-height>
+    <div class="row">
+
+      <!-- Cards -->
+      <div class="col-sm-3">
+        <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
+          <div class="card" ng-class="{ flipped: game.flippedCards[0].status == 'flipped' }">
+            <div class="face front">
+              Front
+            </div>
+            <div class="face back" background-image="game.flippedCards[0].pic"></div>
           </div>
-          <div class="face back" background-image="card.Cover_Url">
+        </div>
+        <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
+          <div class="card" ng-class="{ flipped: game.flippedCards[1].status == 'flipped' }">
+            <div class="face front">
+              Front
+            </div>
+            <div class="face back" background-image="game.flippedCards[1].pic"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card preview -->
+      <div class="col-sm-9">
+        <div class="row line" ng-repeat="row in game.cards | partition:6:this">
+          <div class="col-sm-2" ng-repeat="card in row">
+            <div class="flip" aspect-ratio>
+              <div class="card"
+                ng-class="{ flipped: card.status == 'flipped' }"
+                ng-click="flipCard(card)">
+                <div class="face front">
+                  Front
+                </div>
+                <div class="face back" background-image="card.pic">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -36,5 +100,5 @@
   </div>
 </div>
 <pre>
-  {{game | json}}
+  {{players | json}}
 </pre>

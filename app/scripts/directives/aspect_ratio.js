@@ -14,18 +14,18 @@ angular.module('movieMemoryApp')
 
         var diff = attrs.aspectRatioDiff || 0;
 
-        var setHeight = function() {
-          var height = parseInt(element.width() * 4.0 / 3.0) - diff;
+        var setWidth = function() {
+          var width = parseInt(element.height() * 3.0 / 4.0);
 
-          return element.css('height', height + 'px');
+          return element.css('width', width + 'px');
         };
 
-        $timeout(setHeight);
+        $timeout(setWidth);
 
-        angular.element($window).on('resize', setHeight);
+        angular.element($window).on('resize', setWidth);
 
         var cleanup = function() {
-          return angular.element($window).off('resize', setHeight);
+          return angular.element($window).off('resize', setWidth);
         };
 
         element.on('$destroy', cleanup);
