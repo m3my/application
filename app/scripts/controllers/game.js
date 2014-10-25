@@ -8,7 +8,7 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope, firebase) {
+  .controller('GameCtrl', function ($scope, Game) {
 
     $scope.game = {};
     $scope.game.flippedCards = [];
@@ -50,5 +50,5 @@ angular.module('movieMemoryApp')
       $scope.game.flippedCards = _.where(cards, { isFlipped: true });
     }, true);
 
-    $scope.data = firebase;
+    $scope.data = Game;
   });

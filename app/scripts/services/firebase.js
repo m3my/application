@@ -8,8 +8,7 @@
  * Service in the movieMemoryApp.
  */
 angular.module('movieMemoryApp')
-  .service('firebase', function firebase($firebase) {
-    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/');
-    var sync = $firebase(ref);
-    return sync.$asObject();
+  .service('Game', function Game($firebase) {
+    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games');
+    return $firebase(ref);
   });

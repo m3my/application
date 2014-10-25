@@ -8,14 +8,13 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('MainCtrl', function ($scope, $firebase) {
-    $scope.data = $firebase;
+  .controller('MainCtrl', function ($scope, Game, $location) {
+    var $game = Game.$asArray();
     $scope.play = function () {
-      var ref = new Firebase('https://popping-heat-9121.firebaseio.com/');
-      var obj = $firebase(ref).$asObject();
-      obj.foo = 'bar';
-      obj.$save().then(function(ref) {
-         ref.name() === obj.$id; // true
-      }/*, optional error callback */);
+      $game.$add({cards: 'whatever', players: 'whatever'}).then(function(ref) {
+        var id = ref.name();
+        $location.path('games/' + id);
+      });
     };
+
   });
