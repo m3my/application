@@ -8,10 +8,9 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, firebase) {
+    $scope.data = firebase;
+    $scope.play = function () {
+      console.log("Hello from play()");
+    }
   });
