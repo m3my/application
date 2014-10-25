@@ -1,19 +1,19 @@
 <div class="row">
   <div class="col-sm-3">
     <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
-      <div class="card" ng-class="{ flipped: game.flippedCards[0].isFlipped }">
+      <div class="card" ng-class="{ flipped: game.flippedCards[0].status == 'flipped' }">
         <div class="face front">
           Front
         </div>
-        <div class="face back" background-image="game.flippedCards[0].pic"></div>
+        <div class="face back" background-image="game.flippedCards[0].Cover_Url"></div>
       </div>
     </div>
     <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
-      <div class="card" ng-class="{ flipped: game.flippedCards[1].isFlipped }">
+      <div class="card" ng-class="{ flipped: game.flippedCards[1].status == 'flipped' }">
         <div class="face front">
           Front
         </div>
-        <div class="face back" background-image="game.flippedCards[1].pic"></div>
+        <div class="face back" background-image="game.flippedCards[1].Cover_Url"></div>
       </div>
     </div>
   </div>
@@ -23,12 +23,12 @@
       <div class="col-sm-2" ng-repeat="card in row">
         <div class="flip" aspect-ratio>
           <div class="card"
-          ng-class="{ flipped: card.isFlipped }"
+          ng-class="{ flipped: card.status == 'flipped' }"
           ng-click="flipCard(card)">
           <div class="face front">
             Front
           </div>
-          <div class="face back" background-image="card.pic">
+          <div class="face back" background-image="card.Cover_Url">
           </div>
         </div>
       </div>
@@ -36,5 +36,5 @@
   </div>
 </div>
 <pre>
-  {{players | json}}
+  {{game | json}}
 </pre>
