@@ -58,14 +58,15 @@ angular.module('movieMemoryApp')
                 item.status = 'scored';
               });
               _.where($scope.game.players, { id: $scope.user.id })[0].score++;
-            }, 2000)
+            }, 2000);
 
           } else {
             $timeout(function (argument) {
               _.each($scope.app.flippedCards, function (item) {
                 item.status = 'fresh';
               });
-            }, 2000)
+            }, 2000);
+
             for (var i = 0; i < $scope.game.players.length; ++i) {
               if ($scope.game.players[i].id != $scope.user.id) {
                 $scope.game.activePlayer = $scope.game.players[i].id;
