@@ -12,7 +12,7 @@ angular.module('movieMemoryApp')
 
 
     var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id);
-    $scope.game = $firebase(ref).$asObject();
+    $firebase(ref).$asObject().$bindTo($scope,"game");
 
     var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id + '/players');
     $scope.players = $firebase(ref).$asArray();
