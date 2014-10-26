@@ -33,7 +33,9 @@ angular.module('movieMemoryApp')
     };
 
     $scope.$watch('game.cards', function (cards) {
-      $scope.game.flippedCards = _.where(cards, { status: "flipped" });
+      if (cards) {
+        $scope.game.flippedCards = _.where(cards, { status: "flipped" });
+      }
     }, true);
 
   });
