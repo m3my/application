@@ -1,8 +1,14 @@
 $mmyGameTopBarHeight: 88px;
 
+.game {
+  background-image: url(../images/memory_movie_bg.png);
+  background-size: 100% 100%;
+}
+
 // ---------------------------------------
 // GameTopBar
 // ---------------------------------------
+
 
 .mmyGameTopBar {
 
@@ -24,11 +30,11 @@ $mmyGameTopBarHeight: 88px;
 
   .mmyBackBtn {
     display: table;
-    
+
     >div {
-      @extend .mmyTable;  
+      @extend .mmyTable;
       height: $mmyGameTopBarHeight;
-    }    
+    }
   }
 
   .mmyCenterWrapper {
@@ -50,7 +56,7 @@ $mmyGameTopBarHeight: 88px;
     display: table;
 
     >div {
-      @extend .mmyTable;  
+      @extend .mmyTable;
       height: $mmyGameTopBarHeight;
     }
   }
