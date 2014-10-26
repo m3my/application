@@ -65,7 +65,7 @@ angular.module('movieMemoryApp')
               item.status = 'fresh';
             });
           }
-        }, 3000)
+        }, 2000)
       }
     })
 
