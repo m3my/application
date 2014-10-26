@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'angular-lodash',
-    'firebase'
+    'firebase',
+    'timer'
   ])
   .config(function ($routeProvider) {
     $routeProvider

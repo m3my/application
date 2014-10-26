@@ -74,6 +74,10 @@ $mmyPreviewCardMargin: 30px;
     min-width: 120px;
     width: 120px;
   }
+  .mmyPlayer.isActive {
+    text-decoration: underline;
+  }
+
 
   .mmyTimer {
     min-width: 60px;
@@ -121,7 +125,7 @@ $mmyPreviewCardMargin: 30px;
   .mmyPreviewCard {
     position: relative;
     height: 100%;
-    background-color: grey;
+    background-color: white;
     border: 14px solid white;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
@@ -169,5 +173,21 @@ $mmyPreviewCardMargin: 30px;
   > div {
     display: table-cell;
     vertical-align: middle;
+  }
+}
+
+.mmyTagCard {
+
+  p {
+    display: block;
+    height: 24px;
+    margin-bottom: 0;
+  }
+
+  span {
+    display: block;
+    background-color: black;
+    width: 100%;
+    height: 2px;
   }
 }

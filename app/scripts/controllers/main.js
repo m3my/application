@@ -15,9 +15,9 @@ angular.module('movieMemoryApp')
 
     function createGame(movies) {
       var n = movies.length;
-      var size = 12
+      var size = 12;
 
-      var moviesample = _.sample(movies,size)
+      var moviesample = _.sample(movies,size);
       var covercards = [];
       var tagscards = [];
       for (var i = 0; i < size;++i) {
@@ -34,17 +34,15 @@ angular.module('movieMemoryApp')
       var positions = _.shuffle(_.range(size*2));
 
       var cards = [];
-      for (var i = 0; i < size*2;++i) {
-        cards[i] = moviecards[positions[i]]
+      for (i = 0; i < size*2;++i) {
+        cards[i] = moviecards[positions[i]];
       }
 
-      game.$add(
-          {
-            cards: cards
-          }).then(function(ref) {
-        var id = ref.name();
-        $location.path('games/' + id);
-      });
+      game.$add({ cards: cards })
+        .then(function(ref) {
+          var id = ref.name();
+          $location.path('games/' + id);
+        });
     }
 
     var game = Game.$asArray();

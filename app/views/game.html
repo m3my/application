@@ -1,15 +1,17 @@
-<div class="mmyGame row"> 
+<div class="mmyGame row">
   <!-- Game top bar -->
   <div class="col-sm-12 mmyGameTopBar">
     <div class = mmyAlerts>
       <div>
         <div class="" ng-if="app.error"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.error"></span></div>
         <div class="" ng-if="game.players.length<2"><button type="button" class="close" data-dismiss="alert">&times;</button>Send your friends & enemies this link to join:<br><strong>{{location}}</strong></div>
+        <div class="" ng-if="game.activePlayer == user.id"><button type="button" class="close" data-dismiss="alert">&times;</button>Your turn, pick a card!</div>
+        <div class="" ng-if="game.activePlayer != user.id"><button type="button" class="close" data-dismiss="alert">&times;</button>Watch your opponents move!</div>
         <div class="" ng-if="app.warning"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.warning"></span></div>
         <div class="" ng-if="app.information"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.information"></span></div>
         <div class="" ng-if="app.success"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.success"></span></div>
       </div>
-    </div>     
+    </div>
     <div class="row">
       <div class="col-sm-3" >
         <div class="mmyBackBtn">
@@ -28,24 +30,24 @@
                 </p>
               </div>
             </div>
-            <div class="mmyPlayer">
+            <div class="mmyPlayer" ng-class="{ isActive: game.activePlayer == user.id }" >
               <div>
                 <p>
-                  Stefan
+                  Me
                 </p>
               </div>
             </div>
             <div class="mmyTimer">
               <div>
                 <p>
-                  3
+                  <timer interval="1000" countdown="10">{{seconds}}</timer>
                 </p>
               </div>
             </div>
            <div class="mmyPlayer">
               <div>
                 <p>
-                  Stefan
+                  Friend or Enemy
                 </p>
               </div>
             </div>
@@ -73,10 +75,13 @@
                 <div class="face front">
                 </div>
                 <div class="face back cover" ng-if="app.flippedCards[0].type =='cover'" background-image="app.flippedCards[0].Cover_Url"></div>
-                <div class="face back tags" ng-if="app.flippedCards[0].type =='tags'">
+                <div class="face back tags mmyTagCard" ng-if="app.flippedCards[0].type =='tags'">
                   <p>{{app.flippedCards[0].Tags[0]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[1]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[2]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[3]}}</p>
                 </div>
               </div>
@@ -90,11 +95,14 @@
                 <div class="face front">
                 </div>
                 <div class="face back cover" ng-if="app.flippedCards[1].type =='cover'" background-image="app.flippedCards[1].Cover_Url"></div>
-                <div class="face back tags" ng-if="app.flippedCards[1].type =='tags'">
-                  <p>{{app.flippedCards[0].Tags[0]}}</p>
-                  <p>{{app.flippedCards[0].Tags[1]}}</p>
-                  <p>{{app.flippedCards[0].Tags[2]}}</p>
-                  <p>{{app.flippedCards[0].Tags[3]}}</p>
+                <div class="face back tags mmyTagCard" ng-if="app.flippedCards[1].type =='tags'">
+                  <p>{{app.flippedCards[1].Tags[0]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[1]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[2]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[3]}}</p>
                 </div>
               </div>
             </div>

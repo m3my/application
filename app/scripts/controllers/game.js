@@ -8,7 +8,7 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout, $location, $cookies) {
+  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout, $location) {
 
     $scope.location = $location.absUrl();
     $scope.app.error = '';
@@ -21,7 +21,7 @@ angular.module('movieMemoryApp')
     $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
       $scope.$watch('game.cards', function (cards) {
         if (cards) {
-          $scope.app.flippedCards = _.where(cards, { status: 'flipped' });
+          $scope.app.flippedCards = _.sortBy(_.where(cards, { status: 'flipped' }), 'updatedAt');
         }
       }, true);
 
@@ -34,54 +34,54 @@ angular.module('movieMemoryApp')
         }
       }, true);
 
-      console.log($scope.user.id );
-      if((_.where($scope.game.players, { id: $scope.user.id }) || []).length == 0) {
-        console.log("New User");
+      if((_.where($scope.game.players, { id: $scope.user.id }) || []).length === 0) {
         if (($scope.game.players = $scope.game.players || []).length < 2) {
-          console.log("Adding User");
           $scope.game.players.push(angular.extend($scope.user, { score: 0 }));
-          if ($scope.game.players.length==2) {
+          if ($scope.game.players.length === 2) {
             $scope.game.activePlayer = $scope.user.id;
           }
         } else {
           $scope.app.error = 'Sorry, all 2 seats are already taken :(';
         }
-      } else {
-        console.log("Existing User");
       }
 
     });
 
     $scope.flipCard = function (card) {
-      if ($scope.game.activePlayer == $scope.user.id) {
-        card.status = 'flipped';
+      if ($scope.game.activePlayer === $scope.user.id) {
+        if ($scope.app.flippedCards.length<2) {
+          card.status = 'flipped';
+          card.updatedAt = new Date().getTime();
+          $scope.$broadcast('timer-stop');
+        }
       }
     };
 
     $scope.$watch('app.flippedCards.length', function (length) {
-      if (length == 2 && $scope.game.activePlayer == $scope.user.id) {
-          if ($scope.app.flippedCards[0].IMDB_Id == $scope.app.flippedCards[1].IMDB_Id) {
-            $timeout(function (argument) {
+      if (length === 2 && $scope.game.activePlayer === $scope.user.id) {
+          if ($scope.app.flippedCards[0].IMDB_Id === $scope.app.flippedCards[1].IMDB_Id) {
+            $timeout(function () {
               _.each($scope.app.flippedCards, function (item) {
                 item.status = 'scored';
               });
               _.where($scope.game.players, { id: $scope.user.id })[0].score++;
-            }, 2000)
+            }, 2000);
 
           } else {
-            $timeout(function (argument) {
+            $timeout(function () {
               _.each($scope.app.flippedCards, function (item) {
                 item.status = 'fresh';
               });
-            }, 2000)
+            }, 2000);
+
             for (var i = 0; i < $scope.game.players.length; ++i) {
-              if ($scope.game.players[i].id != $scope.user.id) {
+              if ($scope.game.players[i].id !== $scope.user.id) {
                 $scope.game.activePlayer = $scope.game.players[i].id;
               }
             }
           }
 
       }
-    })
+    });
 
   });
