@@ -10,29 +10,11 @@
 angular.module('movieMemoryApp')
   .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout) {
 
-
     $scope.app.error = '';
     $scope.app.warning  = '';
     $scope.app.information = '';
     $scope.app.success = '';
     $scope.app.flippedCards = [];
-
-
-
-    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id + '/players');
-    $scope.players = $firebase(ref).$asArray();
-
-    $scope.players.$loaded()
-      .then(function (x) {
-        if (x.length==0) {
-          $scope.app.warning = 'You are the only player. Invite more players by sending them the URL.';
-        }
-        if (x.length < 2) {
-          x.$add(angular.extend($scope.user, { score: 0 }));
-        } else {
-          $scope.app.warning = 'Sorry, all 2 seats are already taken :(';
-        }
-      });
 
     var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id);
     $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
@@ -50,6 +32,15 @@ angular.module('movieMemoryApp')
           $scope.app.chunkedCards = _.toArray(lists);
         }
       }, true);
+
+      if (($scope.game.players = $scope.game.players || []).length==0) {
+          $scope.app.warning = 'You are the only player. Invite more players by sending them the URL.';
+      }
+      if ($scope.game.players.length < 2) {
+          $scope.game.players.push(angular.extend($scope.user, { score: 0 }));
+        } else {
+          $scope.app.error = 'Sorry, all 2 seats are already taken :(';
+        }
     });
 
     $scope.flipCard = function (card) {
@@ -64,13 +55,13 @@ angular.module('movieMemoryApp')
             _.each($scope.app.flippedCards, function (item) {
               item.status = 'scored';
             });
-            _.where($scope.players, { id: $scope.user.id })[0].score++;
+            _.where($scope.game.players, { id: $scope.user.id })[0].score++;
           } else {
              _.each($scope.app.flippedCards, function (item) {
               item.status = 'fresh';
             });
           }
-        }, 3000)
+        }, 2000)
       }
     })
 
