@@ -26,7 +26,7 @@
             <div class="mmyScore">
               <div>
                 <p>
-                  {{game.players[0].score}}
+                  {{game.players[(game.players[0].id === user.id) ? 0 : 1].score}}
                 </p>
               </div>
             </div>
@@ -54,7 +54,7 @@
             <div class="mmyScore">
               <div>
                 <p>
-                  {{game.players[1].score}}
+                  {{game.players[(game.players[0].id === user.id) ? 1 : 0].score}}
                 </p>
               </div>
             </div>
