@@ -54,42 +54,42 @@
   <!-- Game board -->
   <div class="col-sm-12 mmyGameBoard" adjust-height>
     <div class="row">
-
       <!-- Cards -->
       <div class="col-sm-3">
         <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
-          <div class="card" ng-class="{ flipped: game.flippedCards[0].status == 'flipped' }">
+          <div class="card" ng-class="{ flipped: app.flippedCards[0].status == 'flipped' }">
             <div class="face front">
               Front
             </div>
-            <div class="face back cover" ng-if="game.flippedCards[0].type =='cover'" background-image="game.flippedCards[0].Cover_Url"></div>
-            <div class="face back tags" ng-if="game.flippedCards[0].type =='tags'">
-              <p>{{game.flippedCards[0].Tags[0]}}</p>
-              <p>{{game.flippedCards[0].Tags[1]}}</p>
-              <p>{{game.flippedCards[0].Tags[2]}}</p>
-              <p>{{game.flippedCards[0].Tags[3]}}</p>
+            <div class="face back cover" ng-if="app.flippedCards[0].type =='cover'" background-image="app.flippedCards[0].Cover_Url"></div>
+            <div class="face back tags" ng-if="app.flippedCards[0].type =='tags'">
+              <p>{{app.flippedCards[0].Tags[0]}}</p>
+              <p>{{app.flippedCards[0].Tags[1]}}</p>
+              <p>{{app.flippedCards[0].Tags[2]}}</p>
+              <p>{{app.flippedCards[0].Tags[3]}}</p>
             </div>
           </div>
         </div>
         <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
-          <div class="card" ng-class="{ flipped: game.flippedCards[1].status == 'flipped' }">
+          <div class="card" ng-class="{ flipped: app.flippedCards[1].status == 'flipped' }">
             <div class="face front">
               Front
             </div>
-            <div class="face back cover" ng-if="game.flippedCards[1].type =='cover'"  background-image="game.flippedCards[1].Cover_Url"></div>
-            <div class="face back tags" ng-if="game.flippedCards[1].type =='tags'">
-              <p>{{game.flippedCards[1].Tags[0]}}</p>
-              <p>{{game.flippedCards[1].Tags[1]}}</p>
-              <p>{{game.flippedCards[1].Tags[2]}}</p>
-              <p>{{game.flippedCards[1].Tags[3]}}</p>
+            <div class="face back cover" ng-if="app.flippedCards[1].type =='cover'"  background-image="app.flippedCards[1].Cover_Url"></div>
+            <div class="face back tags" ng-if="app.flippedCards[1].type =='tags'">
+              <p>{{app.flippedCards[1].Tags[0]}}</p>
+              <p>{{app.flippedCards[1].Tags[1]}}</p>
+              <p>{{app.flippedCards[1].Tags[2]}}</p>
+              <p>{{app.flippedCards[1].Tags[3]}}</p>
             </div>
+
           </div>
         </div>
       </div>
 
       <!-- Card preview -->
       <div class="col-sm-9">
-        <div class="row line" ng-repeat="row in game.cards | partition:6:this">
+        <div class="row line" ng-repeat="row in app.chunkedCards">
           <div class="col-sm-2" ng-repeat="card in row">
             <div class="flip" aspect-ratio>
               <div class="card"
@@ -113,6 +113,3 @@
     </div>
   </div>
 </div>
-<pre>
-  {{game | json}}
-</pre>

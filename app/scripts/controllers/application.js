@@ -10,5 +10,5 @@
 angular.module('movieMemoryApp')
   .controller('ApplicationCtrl', function ($scope, Guid) {
     $scope.user = { id: Guid() };
-    $scope.app = {};
+    $scope.app  = { error: '' };
   });
