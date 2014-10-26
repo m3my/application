@@ -73,10 +73,13 @@
                 <div class="face front">
                 </div>
                 <div class="face back cover" ng-if="app.flippedCards[0].type =='cover'" background-image="app.flippedCards[0].Cover_Url"></div>
-                <div class="face back tags" ng-if="app.flippedCards[0].type =='tags'">
+                <div class="face back tags mmyTagCard" ng-if="app.flippedCards[0].type =='tags'">
                   <p>{{app.flippedCards[0].Tags[0]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[1]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[2]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[3]}}</p>
                 </div>
               </div>
@@ -90,11 +93,14 @@
                 <div class="face front">
                 </div>
                 <div class="face back cover" ng-if="app.flippedCards[1].type =='cover'" background-image="app.flippedCards[1].Cover_Url"></div>
-                <div class="face back tags" ng-if="app.flippedCards[1].type =='tags'">
-                  <p>{{app.flippedCards[0].Tags[0]}}</p>
-                  <p>{{app.flippedCards[0].Tags[1]}}</p>
-                  <p>{{app.flippedCards[0].Tags[2]}}</p>
-                  <p>{{app.flippedCards[0].Tags[3]}}</p>
+                <div class="face back tags mmyTagCard" ng-if="app.flippedCards[1].type =='tags'">
+                  <p>{{app.flippedCards[1].Tags[0]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[1]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[2]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[3]}}</p>
                 </div>
               </div>
             </div>
