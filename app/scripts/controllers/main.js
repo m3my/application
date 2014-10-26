@@ -15,7 +15,7 @@ angular.module('movieMemoryApp')
 
     function createGame(movies) {
       var n = movies.length;
-      var size = 12
+      var size = 3
 
       var moviesample = _.sample(movies,size)
       var covercards = [];

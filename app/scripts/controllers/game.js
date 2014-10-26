@@ -13,24 +13,7 @@ angular.module('movieMemoryApp')
     $scope.app.error = '';
     $scope.app.flippedCards = [];
 
-    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id);
-    $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
-      $scope.$watch('game.cards', function (cards) {
-        if (cards) {
-          $scope.app.flippedCards = _.where(cards, { status: 'flipped' });
-        }
-      }, true);
 
-      $scope.$watch('game.cards', function (cards) {
-        if (cards) {
-          var lists = _.groupBy(cards, function(element, index){
-            return Math.floor(index / 6);
-          });
-          $scope.app.chunkedCards = _.toArray(lists);
-        }
-      }, true);
-
-    });
 
     var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id + '/players');
     $scope.players = $firebase(ref).$asArray();
@@ -44,15 +27,33 @@ angular.module('movieMemoryApp')
         }
       });
 
+    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id);
+    $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
+      $scope.$watch('game.cards', function (cards) {
+        if (cards) {
+          $scope.app.flippedCards = _.where(cards, { status: 'flipped' });
+        }
+      }, true);
+
+      $scope.$watch('game.cards', function (cards) {
+        if (cards) {
+          var lists = _.groupBy(cards, function(item, index){
+            return Math.floor(index / 6);
+          });
+          $scope.app.chunkedCards = _.toArray(lists);
+        }
+      }, true);
+    });
+
+
+
     $scope.flipCard = function (card) {
-      if (($scope.app.flippedCards || []).length < 2) {
-        card.status = 'flipped';
+      if ($scope.app.flippedCards.length == 2) {
+        _.each($scope.app.flippedCards, function (item) {
+          item.status = 'fresh';
+        });
       }
+      card.status = 'flipped';
     };
-
-    $scope.isCardFlipped = function (card) {
-      return card.status === 'flipped';
-    }
-
 
   });
