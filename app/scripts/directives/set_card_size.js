@@ -12,10 +12,10 @@ angular.module('movieMemoryApp')
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
 
-        var margin = 20;
+        var margin = 30;
 
         var setSize = function() {
-          var height = (($window.innerHeight - $('.mmyGameTopBar').height())-margin*4)/4;
+          var height = (($window.innerHeight - $('.mmyGameTopBar').height())-margin*5)/4;
           var width = height * 3.0/4.0;
 
           return element.css({ 'height': height + 'px', 'width': width + 'px' });

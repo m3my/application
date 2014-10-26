@@ -65,7 +65,7 @@
       <div class="col-sm-3 mmyPreviewCards">
         <div class="row">
           <div class="mmyPrieviewCardWrapper">
-            <div class="mmyPreviewCard big-card flip" set-preview-card-size>
+            <div class="mmyPreviewCard flip" set-preview-card-size>
               <div class="card" ng-class="{ flipped: app.flippedCards[0].status == 'flipped' }">
                 <div class="face front">
                 </div>
@@ -82,11 +82,11 @@
         </div>
         <div class="row">
           <div class="mmyPrieviewCardWrapper">
-            <div class="mmyPreviewCard big-card flip" set-preview-card-size>
+            <div class="mmyPreviewCard flip" set-preview-card-size>
               <div class="card" ng-class="{ flipped: app.flippedCards[1].status == 'flipped' }">
                 <div class="face front">
                 </div>
-                <div class="face back cover" ng-if="app.flippedCards[1].type =='cover'" background-image="app.flippedCards[0].Cover_Url"></div>
+                <div class="face back cover" ng-if="app.flippedCards[1].type =='cover'" background-image="app.flippedCards[1].Cover_Url"></div>
                 <div class="face back tags" ng-if="app.flippedCards[1].type =='tags'">
                   <p>{{app.flippedCards[0].Tags[0]}}</p>
                   <p>{{app.flippedCards[0].Tags[1]}}</p>
@@ -100,16 +100,15 @@
       </div>
 
       <!-- Card preview -->
-      <div class="col-sm-9">
-        <div class="row line" ng-repeat="row in app.chunkedCards">
-          <div class="col-sm-2" ng-repeat="card in row">
-            <div class="flip" set-card-size>
+      <div class="col-sm-9 mmyCards">
+        <div class="mmyCardRow" ng-repeat="row in app.chunkedCards">
+          <div class="mmyCardCol" ng-repeat="card in row">
+            <div class="flip mmyCard" set-card-size>
               <div class="card"
                 ng-class="{ flipped: card.status == 'flipped' }"
                 ng-click="flipCard(card)"
                 ng-if="card.status!='scored'">
                 <div class="face front">
-                  Front {{card.IMDB_Id}}
                 </div>
                 <div class="face back cover" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
                 <div class="face back tags" ng-if="card.type =='tags'">
