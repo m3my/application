@@ -86,7 +86,12 @@
                 <div class="face front">
                   Front
                 </div>
-                <div class="face back" background-image="card.Cover_Url">
+                <div class="face back" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
+                <div class="face back 2" ng-if="card.type =='tags'">
+                  <p>{{card.Tags[0]}}</p>
+                  <p>{{card.Tags[1]}}</p>
+                  <p>{{card.Tags[2]}}</p>
+                  <p>{{card.Tags[3]}}</p>
                 </div>
               </div>
             </div>
