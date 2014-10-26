@@ -5,6 +5,8 @@
       <div>
         <div class="" ng-if="app.error"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.error"></span></div>
         <div class="" ng-if="game.players.length<2"><button type="button" class="close" data-dismiss="alert">&times;</button>Send your friends & enemies this link to join:<br><strong>{{location}}</strong></div>
+        <div class="" ng-if="game.activePlayer == user.id"><button type="button" class="close" data-dismiss="alert">&times;</button>Your turn, pick a card!</div>
+        <div class="" ng-if="game.activePlayer != user.id"><button type="button" class="close" data-dismiss="alert">&times;</button>Watch your opponents move!</div>
         <div class="" ng-if="app.warning"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.warning"></span></div>
         <div class="" ng-if="app.information"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.information"></span></div>
         <div class="" ng-if="app.success"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.success"></span></div>
@@ -73,10 +75,13 @@
                 <div class="face front">
                 </div>
                 <div class="face back cover" ng-if="app.flippedCards[0].type =='cover'" background-image="app.flippedCards[0].Cover_Url"></div>
-                <div class="face back tags" ng-if="app.flippedCards[0].type =='tags'">
+                <div class="face back tags mmyTagCard" ng-if="app.flippedCards[0].type =='tags'">
                   <p>{{app.flippedCards[0].Tags[0]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[1]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[2]}}</p>
+                  <span></span>
                   <p>{{app.flippedCards[0].Tags[3]}}</p>
                 </div>
               </div>
@@ -90,11 +95,14 @@
                 <div class="face front">
                 </div>
                 <div class="face back cover" ng-if="app.flippedCards[1].type =='cover'" background-image="app.flippedCards[1].Cover_Url"></div>
-                <div class="face back tags" ng-if="app.flippedCards[1].type =='tags'">
-                  <p>{{app.flippedCards[0].Tags[0]}}</p>
-                  <p>{{app.flippedCards[0].Tags[1]}}</p>
-                  <p>{{app.flippedCards[0].Tags[2]}}</p>
-                  <p>{{app.flippedCards[0].Tags[3]}}</p>
+                <div class="face back tags mmyTagCard" ng-if="app.flippedCards[1].type =='tags'">
+                  <p>{{app.flippedCards[1].Tags[0]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[1]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[2]}}</p>
+                  <span></span>
+                  <p>{{app.flippedCards[1].Tags[3]}}</p>
                 </div>
               </div>
             </div>
