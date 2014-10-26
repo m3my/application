@@ -8,7 +8,7 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout, $location, $cookies) {
+  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout, $location) {
 
     $scope.location = $location.absUrl();
     $scope.app.error = '';
@@ -21,7 +21,7 @@ angular.module('movieMemoryApp')
     $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
       $scope.$watch('game.cards', function (cards) {
         if (cards) {
-          $scope.app.flippedCards = _.where(cards, { status: 'flipped' });
+          $scope.app.flippedCards = _.where(cards, { status: 'flipped' }).sort;
         }
       }, true);
 
@@ -34,10 +34,10 @@ angular.module('movieMemoryApp')
         }
       }, true);
 
-      if((_.where($scope.game.players, { id: $scope.user.id }) || []).length == 0) {
+      if((_.where($scope.game.players, { id: $scope.user.id }) || []).length === 0) {
         if (($scope.game.players = $scope.game.players || []).length < 2) {
           $scope.game.players.push(angular.extend($scope.user, { score: 0 }));
-          if ($scope.game.players.length==2) {
+          if ($scope.game.players.length === 2) {
             $scope.game.activePlayer = $scope.user.id;
           }
         } else {
@@ -48,15 +48,15 @@ angular.module('movieMemoryApp')
     });
 
     $scope.flipCard = function (card) {
-      if ($scope.game.activePlayer == $scope.user.id) {
+      if ($scope.game.activePlayer === $scope.user.id) {
         card.status = 'flipped';
       }
     };
 
     $scope.$watch('app.flippedCards.length', function (length) {
-      if (length == 2 && $scope.game.activePlayer == $scope.user.id) {
-          if ($scope.app.flippedCards[0].IMDB_Id == $scope.app.flippedCards[1].IMDB_Id) {
-            $timeout(function (argument) {
+      if (length === 2 && $scope.game.activePlayer === $scope.user.id) {
+          if ($scope.app.flippedCards[0].IMDB_Id === $scope.app.flippedCards[1].IMDB_Id) {
+            $timeout(function () {
               _.each($scope.app.flippedCards, function (item) {
                 item.status = 'scored';
               });
@@ -64,20 +64,20 @@ angular.module('movieMemoryApp')
             }, 2000);
 
           } else {
-            $timeout(function (argument) {
+            $timeout(function () {
               _.each($scope.app.flippedCards, function (item) {
                 item.status = 'fresh';
               });
             }, 2000);
 
             for (var i = 0; i < $scope.game.players.length; ++i) {
-              if ($scope.game.players[i].id != $scope.user.id) {
+              if ($scope.game.players[i].id !== $scope.user.id) {
                 $scope.game.activePlayer = $scope.game.players[i].id;
               }
             }
           }
 
       }
-    })
+    });
 
   });
