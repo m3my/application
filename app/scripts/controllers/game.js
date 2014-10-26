@@ -21,7 +21,7 @@ angular.module('movieMemoryApp')
     $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
       $scope.$watch('game.cards', function (cards) {
         if (cards) {
-          $scope.app.flippedCards = _.where(cards, { status: 'flipped' }).sort;
+          $scope.app.flippedCards = _.where(cards, { status: 'flipped' });
         }
       }, true);
 
@@ -51,6 +51,8 @@ angular.module('movieMemoryApp')
       if ($scope.game.activePlayer === $scope.user.id) {
         if ($scope.app.flippedCards.length<2) {
           card.status = 'flipped';
+          card.updatedAt = new Date().getTime();
+          $scope.$broadcast('timer-stop');
         }
       }
     };
