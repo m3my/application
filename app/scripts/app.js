@@ -34,3 +34,5 @@ angular
         redirectTo: '/'
       });
   });
+
+  Firebase.enableLogging(true);
