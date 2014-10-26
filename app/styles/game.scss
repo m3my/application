@@ -176,13 +176,18 @@ $mmyPreviewCardMargin: 30px;
   display: table;
   height: 100%;
   width: 40%;
-  font-size: 14px;
+  font-size: 13px;
   position: absolute;
-  left: 12%;
+  left: 170px;
+
+  p {
+    padding-left: 21px;
+    padding-top: 4px;
+  }
 
   button {
     float: left;
-    padding: 0 10px 0 0 ;
+    padding: 0 8px 0 0 ;
   }
 
   > div {

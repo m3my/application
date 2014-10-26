@@ -3,13 +3,13 @@
   <div class="col-sm-12 mmyGameTopBar">
     <div class = mmyAlerts>
       <div>
-        <div class="" ng-if="app.error"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.error"></span></div>
-        <div class="" ng-if="game.players.length<2"><button type="button" class="close" data-dismiss="alert">&times;</button>Send your friends & enemies this link to join:<br><strong>{{location}}</strong></div>
-        <div class="" ng-if="game.activePlayer == user.id"><button type="button" class="close" data-dismiss="alert">&times;</button>Your turn, pick a card!</div>
-        <div class="" ng-if="game.activePlayer != user.id"><button type="button" class="close" data-dismiss="alert">&times;</button>Watch your opponents move!</div>
-        <div class="" ng-if="app.warning"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.warning"></span></div>
-        <div class="" ng-if="app.information"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.information"></span></div>
-        <div class="" ng-if="app.success"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.success"></span></div>
+        <div class="" ng-if="app.error"><button type="button" class="close" data-dismiss="alert">&times;</button><p><span ng-bind="app.error"></span></p></div>
+        <div class="" ng-if="game.players.length<2"><button type="button" class="close" data-dismiss="alert">&times;</button><p>Send your friends & enemies this link to join:<br><strong>{{location}}</strong></p></div>
+        <div class="" ng-if="game.activePlayer == user.id"><button type="button" class="close" data-dismiss="alert">&times;</button><p>Your turn, pick a card!</p></div>
+        <div class="" ng-if="game.activePlayer != user.id"><button type="button" class="close" data-dismiss="alert">&times;</button><p>Watch your opponents move!</p></div>
+        <div class="" ng-if="app.warning"><button type="button" class="close" data-dismiss="alert">&times;</button><p><span ng-bind="app.warning"></span></p></div>
+        <div class="" ng-if="app.information"><button type="button" class="close" data-dismiss="alert">&times;</button><p><span ng-bind="app.information"></span></p></div>
+        <div class="" ng-if="app.success"><button type="button" class="close" data-dismiss="alert">&times;</button><p><span ng-bind="app.success"></span></p></div>
       </div>
     </div>
     <div class="row">
