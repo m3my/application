@@ -72,10 +72,10 @@
           <div class="mmyPrieviewCardWrapper">
             <div class="mmyPreviewCard flip" set-preview-card-size>
               <div class="card" ng-class="{ flipped: app.flippedCards[0].status == 'flipped' }">
-                <div class="face front">
+                <div class="face front mmyPreviewCardBorder">
                 </div>
-                <div class="face back cover" ng-if="app.flippedCards[0].type =='cover'" background-image="app.flippedCards[0].Cover_Url"></div>
-                <div class="face back tags mmyTagCard" ng-if="app.flippedCards[0].type =='tags'">
+                <div class="face back cover mmyPreviewCardBorder" ng-if="app.flippedCards[0].type =='cover'" background-image="app.flippedCards[0].Cover_Url"></div>
+                <div class="face back tags mmyPreviewCardBorder" ng-if="app.flippedCards[0].type =='tags'">
                   <p>{{app.flippedCards[0].Tags[0]}}</p>
                   <span></span>
                   <p>{{app.flippedCards[0].Tags[1]}}</p>
@@ -92,10 +92,10 @@
           <div class="mmyPrieviewCardWrapper">
             <div class="mmyPreviewCard flip" set-preview-card-size>
               <div class="card" ng-class="{ flipped: app.flippedCards[1].status == 'flipped' }">
-                <div class="face front">
+                <div class="face front mmyPreviewCardBorder">
                 </div>
-                <div class="face back cover" ng-if="app.flippedCards[1].type =='cover'" background-image="app.flippedCards[1].Cover_Url"></div>
-                <div class="face back tags mmyTagCard" ng-if="app.flippedCards[1].type =='tags'">
+                <div class="face back cover mmyPreviewCardBorder" ng-if="app.flippedCards[1].type =='cover'" background-image="app.flippedCards[1].Cover_Url"></div>
+                <div class="face back tags mmyPreviewCardBorder" ng-if="app.flippedCards[1].type =='tags'">
                   <p>{{app.flippedCards[1].Tags[0]}}</p>
                   <span></span>
                   <p>{{app.flippedCards[1].Tags[1]}}</p>
@@ -118,10 +118,10 @@
                 ng-class="{ flipped: card.status == 'flipped' }"
                 ng-click="flipCard(card)"
                 ng-if="card.status!='scored'">
-                <div class="face front">
+                <div class="face front mmyCardBorder">
                 </div>
-                <div class="face back cover" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
-                <div class="face back tags" ng-if="card.type =='tags'">
+                <div class="face back cover mmyCardBorder" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
+                <div class="face back tags mmyCardBorder" ng-if="card.type =='tags'">
                   <p>{{card.Tags[0]}}</p>
                   <p>{{card.Tags[1]}}</p>
                   <p>{{card.Tags[2]}}</p>

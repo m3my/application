@@ -24,6 +24,7 @@
   text-align: center;
 }
 .flip .card .front {
+  background-color: white;
   position: absolute;
   z-index: 1;
   background-image: url(../images/card_bg.png);
@@ -31,6 +32,7 @@
   cursor: pointer;
 }
 .flip .card .back {
+  background-color: white;
   -webkit-transform: rotatey(-180deg);
   background: blue;
   background: white;

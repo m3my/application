@@ -125,6 +125,9 @@ $mmyPreviewCardMargin: 30px;
   .mmyPreviewCard {
     position: relative;
     height: 100%;
+  }
+
+  .mmyPreviewCardBorder {
     background-color: white;
     border: 14px solid white;
     -webkit-border-radius: 8px;
@@ -135,12 +138,16 @@ $mmyPreviewCardMargin: 30px;
     box-shadow:         0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   }
 
-  .mmyCard {
-    @extend .mmyPreviewCard;
+  .mmyCardBorder {
+    @extend .mmyPreviewCardBorder;
     border: 7px solid white;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
+  }
+
+  .mmyCard {
+    @extend .mmyPreviewCard;
   }
 
   .mmyCardRow {
