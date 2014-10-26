@@ -71,7 +71,6 @@ angular.module('movieMemoryApp')
 				item.status = 'scored';
 			    });
 			    $scope.game.players[p].score++;
-			    // _.where($scope.game.players, { id: $scope.user.id })[0].score++;
 			} else {
 			    _.each($scope.app.flippedCards, function (item) {
 				item.status = 'fresh';
