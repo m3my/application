@@ -95,7 +95,8 @@
             <div class="flip" aspect-ratio>
               <div class="card"
                 ng-class="{ flipped: card.status == 'flipped' }"
-                ng-click="flipCard(card)">
+                ng-click="flipCard(card)"
+                ng-if="card.status!='scored'">
                 <div class="face front">
                   Front {{card.IMDBf_Id}}
                 </div>
