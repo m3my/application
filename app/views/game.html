@@ -1,4 +1,4 @@
-<div class="mmyGame row"> 
+<div class="mmyGame row">
   <!-- Game top bar -->
   <div class="col-sm-12 mmyGameTopBar">
     <div class = mmyAlerts>
@@ -9,12 +9,12 @@
         <div class="" ng-if="app.information"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.information"></span></div>
         <div class="" ng-if="app.success"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.success"></span></div>
       </div>
-    </div>     
+    </div>
     <div class="row">
       <div class="col-sm-3" >
         <div class="mmyBackBtn">
           <div>
-            <a href="#" class="mmyBtn" role="button">Back</a>
+            <a href="#" class="mmyBtn" role="button">New</a>
           </div>
         </div>
       </div>
@@ -28,24 +28,24 @@
                 </p>
               </div>
             </div>
-            <div class="mmyPlayer">
+            <div class="mmyPlayer" ng-class="{ isActive: game.activePlayer == user.id }" >
               <div>
                 <p>
-                  Stefan
+                  Me
                 </p>
               </div>
             </div>
             <div class="mmyTimer">
               <div>
                 <p>
-                  3
+                  -
                 </p>
               </div>
             </div>
            <div class="mmyPlayer">
               <div>
                 <p>
-                  Stefan
+                  Friend or Enemy
                 </p>
               </div>
             </div>

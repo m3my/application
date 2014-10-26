@@ -54,7 +54,9 @@ angular.module('movieMemoryApp')
 
     $scope.flipCard = function (card) {
       if ($scope.game.activePlayer == $scope.user.id) {
-        card.status = 'flipped';
+        if ($scope.app.flippedCards.length<2) {
+          card.status = 'flipped';
+        }
       }
     };
 
