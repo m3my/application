@@ -15,17 +15,13 @@ angular.module('movieMemoryApp')
 
 
 
-    var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id + '/players');
-    $scope.players = $firebase(ref).$asArray();
+    // var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id + '/players');
+    // $scope.players = $firebase(ref).$asArray();
 
-    $scope.players.$loaded()
-      .then(function (x) {
-        if (x.length < 2) {
-          x.$add(angular.extend($scope.user, { score: 0 }));
-        } else {
-          $scope.app.error = 'Sorry, all 2 seats are already taken :(';
-        }
-      });
+    // $scope.players.$loaded()
+    //   .then(function (x) {
+
+    //   });
 
     var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id);
     $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
@@ -43,6 +39,12 @@ angular.module('movieMemoryApp')
           $scope.app.chunkedCards = _.toArray(lists);
         }
       }, true);
+
+      if (($scope.game.players = $scope.game.players || []).length < 2) {
+          $scope.game.players.push(angular.extend($scope.user, { score: 0 }));
+        } else {
+          $scope.app.error = 'Sorry, all 2 seats are already taken :(';
+        }
     });
 
     $scope.flipCard = function (card) {
@@ -57,7 +59,7 @@ angular.module('movieMemoryApp')
             _.each($scope.app.flippedCards, function (item) {
               item.status = 'scored';
             });
-            _.where($scope.players, { id: $scope.user.id })[0].score++;
+            _.where($scope.game.players, { id: $scope.user.id })[0].score++;
           } else {
              _.each($scope.app.flippedCards, function (item) {
               item.status = 'fresh';
