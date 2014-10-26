@@ -15,7 +15,7 @@
             <div class="mmyScore">
               <div>
                 <p>
-                  2
+                  {{players[0].score}}
                 </p>
               </div>
             </div>
@@ -43,7 +43,7 @@
             <div class="mmyScore">
               <div>
                 <p>
-                  2
+                  {{players[1].score}}
                 </p>
               </div>
             </div>
@@ -97,7 +97,7 @@
                 ng-class="{ flipped: card.status == 'flipped' }"
                 ng-click="flipCard(card)">
                 <div class="face front">
-                  Front {{card.IMssDB_Id}}
+                  Front {{card.IMDBf_Id}}
                 </div>
                 <div class="face back cover" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
                 <div class="face back tags" ng-if="card.type =='tags'">

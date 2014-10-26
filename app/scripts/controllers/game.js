@@ -21,7 +21,7 @@ angular.module('movieMemoryApp')
     $scope.players.$loaded()
       .then(function (x) {
         if (x.length < 2) {
-          x.$add(angular.extend($scope.user, { scores: 0 }));
+          x.$add(angular.extend($scope.user, { score: 0 }));
         } else {
           $scope.app.error = 'Sorry, all 2 seats are already taken :(';
         }
@@ -48,12 +48,22 @@ angular.module('movieMemoryApp')
 
 
     $scope.flipCard = function (card) {
-      if ($scope.app.flippedCards.length == 2) {
-        _.each($scope.app.flippedCards, function (item) {
-          item.status = 'fresh';
-        });
-      }
       card.status = 'flipped';
     };
+
+    $scope.$watch('app.flippedCards.length', function (length) {
+      if (length == 2) {
+        if ($scope.app.flippedCards[0].IMDB_Id == $scope.app.flippedCards[1].IMDB_Id) {
+          _.each($scope.app.flippedCards, function (item) {
+            item.status = 'scored';
+          });
+          _.where($scope.players, { id: $scope.user.id })[0].score++;
+        } else {
+           _.each($scope.app.flippedCards, function (item) {
+            item.status = 'fresh';
+          });
+        }
+      }
+    })
 
   });

@@ -38,7 +38,7 @@ angular.module('movieMemoryApp')
         cards[i] = moviecards[positions[i]]
       }
 
-      $game.$add(
+      game.$add(
           {
             cards: cards
           }).then(function(ref) {
@@ -47,7 +47,7 @@ angular.module('movieMemoryApp')
       });
     }
 
-    var $game = Game.$asArray();
+    var game = Game.$asArray();
     $scope.play = function () {
       var ref = new Firebase('https://popping-heat-9121.firebaseio.com/movies');
       var movies = $firebase(ref).$asArray();
