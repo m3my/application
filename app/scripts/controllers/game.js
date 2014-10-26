@@ -21,7 +21,7 @@ angular.module('movieMemoryApp')
     $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
       $scope.$watch('game.cards', function (cards) {
         if (cards) {
-          $scope.app.flippedCards = _.where(cards, { status: 'flipped' });
+          $scope.app.flippedCards = _.sortBy(_.where(cards, { status: 'flipped' }), 'updatedAt');
         }
       }, true);
 
