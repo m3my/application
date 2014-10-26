@@ -22,7 +22,7 @@ angular.module('movieMemoryApp')
         if (x.length < 2) {
           x.$add(angular.extend($scope.user, { scores: 0 }));
         } else {
-          $scope.app.error = 'Sorry. All seats are already taken (';
+          $scope.app.error = 'Sorry, all 2 seats are already taken :(';
         }
       });
 
