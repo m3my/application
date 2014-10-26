@@ -2,14 +2,20 @@
   <!-- Game top bar -->
   <div class="col-sm-12 mmyGameTopBar">
     <div class="row">
-      <div class="col-sm-3" >
+      <div class="col-sm-2" >
         <div class="mmyBackBtn">
           <div>
             <a href="#" class="mmyBtn" role="button">Back</a>
           </div>
         </div>
       </div>
-      <div class="col-sm-9">
+      <div class="col-sm-6" >
+        <div class="alert alert-error" ng-if="app.error"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.error"></span></div>
+        <div class="alert alert-warning" ng-if="app.warning"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.warning"></span></div>
+        <div class="alert alert-information" ng-if="app.information"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.information"></span></div>
+        <div class="alert alert-success" ng-if="app.success"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.success"></span></div>
+      </div>
+      <div class="col-sm-4">
         <div class="mmyCenterWrapper">
           <div class="mmyGameStatusBar">
             <div class="mmyScore">

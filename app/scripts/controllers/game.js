@@ -10,7 +10,11 @@
 angular.module('movieMemoryApp')
   .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout) {
 
+
     $scope.app.error = '';
+    $scope.app.warning  = '';
+    $scope.app.information = '';
+    $scope.app.success = '';
     $scope.app.flippedCards = [];
 
 
@@ -20,10 +24,13 @@ angular.module('movieMemoryApp')
 
     $scope.players.$loaded()
       .then(function (x) {
+        if (x.length==0) {
+          $scope.app.warning = 'You are the only player. Invite more players by sending them the URL.';
+        }
         if (x.length < 2) {
           x.$add(angular.extend($scope.user, { score: 0 }));
         } else {
-          $scope.app.error = 'Sorry, all 2 seats are already taken :(';
+          $scope.app.warning = 'Sorry, all 2 seats are already taken :(';
         }
       });
 
