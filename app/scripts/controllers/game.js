@@ -8,7 +8,7 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope, $routeParams, $firebase) {
+  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout) {
 
     $scope.app.error = '';
     $scope.app.flippedCards = [];
@@ -45,24 +45,25 @@ angular.module('movieMemoryApp')
       }, true);
     });
 
-
-
     $scope.flipCard = function (card) {
       card.status = 'flipped';
     };
 
     $scope.$watch('app.flippedCards.length', function (length) {
       if (length == 2) {
-        if ($scope.app.flippedCards[0].IMDB_Id == $scope.app.flippedCards[1].IMDB_Id) {
-          _.each($scope.app.flippedCards, function (item) {
-            item.status = 'scored';
-          });
-          _.where($scope.players, { id: $scope.user.id })[0].score++;
-        } else {
-           _.each($scope.app.flippedCards, function (item) {
-            item.status = 'fresh';
-          });
-        }
+        $timeout(function (argument) {
+
+          if ($scope.app.flippedCards[0].IMDB_Id == $scope.app.flippedCards[1].IMDB_Id) {
+            _.each($scope.app.flippedCards, function (item) {
+              item.status = 'scored';
+            });
+            _.where($scope.players, { id: $scope.user.id })[0].score++;
+          } else {
+             _.each($scope.app.flippedCards, function (item) {
+              item.status = 'fresh';
+            });
+          }
+        }, 3000)
       }
     })
 

@@ -98,7 +98,7 @@
                 ng-click="flipCard(card)"
                 ng-if="card.status!='scored'">
                 <div class="face front">
-                  Front {{card.IMDBf_Id}}
+                  Front {{card.IMDB_Id}}
                 </div>
                 <div class="face back cover" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
                 <div class="face back tags" ng-if="card.type =='tags'">
