@@ -101,8 +101,7 @@
 
       <!-- Card preview -->
       <div class="col-sm-9 mmyCards">
-        <div class="mmyCardRow" ng-repeat="row in app.chunkedCards">
-          <div class="mmyCardCol" ng-repeat="card in row">
+        <div class="mmyCardRow" ng-repeat="row in app.chunkedCards"><div class="mmyCardCol" ng-repeat="card in row">
             <div class="flip mmyCard" set-card-size>
               <div class="card"
                 ng-class="{ flipped: card.status == 'flipped' }"

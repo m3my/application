@@ -104,6 +104,7 @@ $mmyGameTopBarHeight: 88px;
         }
     }
     > .mmyCards {
+      font-size: 0;
       height: 100%;
       padding: 15px 0 15px 0;
       text-align: center;
@@ -144,6 +145,5 @@ $mmyGameTopBarHeight: 88px;
 
   .mmyCardCol {
     float: left;
-    padding: 15px;
   }
 }
