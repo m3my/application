@@ -58,5 +58,5 @@ angular.module('movieMemoryApp')
               console.error(err);
       });
     };
-
+    $scope.play();
   });
