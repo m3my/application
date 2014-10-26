@@ -35,4 +35,4 @@ angular
       });
   });
 
-  Firebase.enableLogging(true);
+  Firebase.enableLogging(false);
