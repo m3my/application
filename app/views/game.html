@@ -75,15 +75,31 @@
                 <div class="face front mmyPreviewCardBorder">
                 </div>
                 <div class="face back cover mmyPreviewCardBorder" ng-if="app.flippedCards[0].type =='cover'" background-image="app.flippedCards[0].Cover_Url"></div>
-                <div class="face back tags mmyPreviewCardBorder" ng-if="app.flippedCards[0].type =='tags'">
-                  <p>{{app.flippedCards[0].Tags[0]}}</p>
-                  <span></span>
-                  <p>{{app.flippedCards[0].Tags[1]}}</p>
-                  <span></span>
-                  <p>{{app.flippedCards[0].Tags[2]}}</p>
-                  <span></span>
-                  <p>{{app.flippedCards[0].Tags[3]}}</p>
-                </div>
+                <div class="face back tags mmyPreviewCardBorder mmyTagCard" ng-if="app.flippedCards[0].type =='tags'">
+                  <div>
+                    <div>
+                      <p>{{app.flippedCards[0].Tags[0]}}</p>
+                    </div>
+                    <span></span>
+                  </div>
+                  <div>
+                    <div>
+                      <p>{{app.flippedCards[0].Tags[1]}}</p>
+                    </div>
+                    <span></span>
+                  </div>
+                  <div>
+                    <div>
+                      <p>{{app.flippedCards[0].Tags[2]}}</p>
+                    </div>
+                    <span></span>
+                  </div>
+                  <div>
+                    <div>
+                      <p>{{app.flippedCards[0].Tags[3]}}</p>
+                    </div>
+                  </div>
+                </div>                                    
               </div>
             </div>
           </div>
@@ -95,14 +111,30 @@
                 <div class="face front mmyPreviewCardBorder">
                 </div>
                 <div class="face back cover mmyPreviewCardBorder" ng-if="app.flippedCards[1].type =='cover'" background-image="app.flippedCards[1].Cover_Url"></div>
-                <div class="face back tags mmyPreviewCardBorder" ng-if="app.flippedCards[1].type =='tags'">
-                  <p>{{app.flippedCards[1].Tags[0]}}</p>
-                  <span></span>
-                  <p>{{app.flippedCards[1].Tags[1]}}</p>
-                  <span></span>
-                  <p>{{app.flippedCards[1].Tags[2]}}</p>
-                  <span></span>
-                  <p>{{app.flippedCards[1].Tags[3]}}</p>
+                <div class="face back tags mmyPreviewCardBorder mmyTagCard" ng-if="app.flippedCards[1].type =='tags'">
+                  <div>
+                    <div>
+                      <p>{{app.flippedCards[1].Tags[0]}}</p>
+                    </div>
+                    <span></span>
+                  </div>
+                  <div>
+                    <div>
+                      <p>{{app.flippedCards[1].Tags[1]}}</p>
+                    </div>
+                    <span></span>
+                  </div>
+                  <div>
+                    <div>
+                      <p>{{app.flippedCards[1].Tags[2]}}</p>
+                    </div>
+                    <span></span>
+                  </div>
+                  <div>
+                    <div>
+                      <p>{{app.flippedCards[1].Tags[3]}}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -121,11 +153,30 @@
                 <div class="face front mmyCardBorder">
                 </div>
                 <div class="face back cover mmyCardBorder" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
-                <div class="face back tags mmyCardBorder" ng-if="card.type =='tags'">
-                  <p>{{card.Tags[0]}}</p>
-                  <p>{{card.Tags[1]}}</p>
-                  <p>{{card.Tags[2]}}</p>
-                  <p>{{card.Tags[3]}}</p>
+                <div class="face back tags mmyCardBorder mmyTagCardSmall" ng-if="card.type =='tags'">
+                  <div>
+                    <div>
+                      <p>{{card.Tags[0]}}</p>
+                    </div>
+                    <span></span>
+                  </div>
+                  <div>
+                    <div>
+                      <p>{{card.Tags[1]}}</p>
+                    </div>
+                    <span></span>
+                  </div>
+                  <div>
+                    <div>
+                      <p>{{card.Tags[2]}}</p>
+                    </div>
+                    <span></span>
+                  </div>                                    
+                  <div>
+                    <div>
+                      <p>{{card.Tags[3]}}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
