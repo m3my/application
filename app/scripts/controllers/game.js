@@ -8,7 +8,7 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout, $location) {
+  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout, $location, $cookies) {
 
     $scope.location = $location.absUrl();
     $scope.app.error = '';
@@ -34,7 +34,11 @@ angular.module('movieMemoryApp')
         }
       }, true);
 
+      console.log($scope.user.id );
+      if((_.where($scope.game.players, { id: $scope.user.id }) || []).length == 0) {
+        console.log("New User");
         if (($scope.game.players = $scope.game.players || []).length < 2) {
+          console.log("Adding User");
           $scope.game.players.push(angular.extend($scope.user, { score: 0 }));
           if ($scope.game.players.length==2) {
             $scope.game.activePlayer = $scope.user.id;
@@ -42,6 +46,10 @@ angular.module('movieMemoryApp')
         } else {
           $scope.app.error = 'Sorry, all 2 seats are already taken :(';
         }
+      } else {
+        console.log("Existing User");
+      }
+
     });
 
     $scope.flipCard = function (card) {
