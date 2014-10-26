@@ -97,7 +97,7 @@
                 ng-class="{ flipped: card.status == 'flipped' }"
                 ng-click="flipCard(card)">
                 <div class="face front">
-                  Front {{card.IMDBf_Id}}
+                  Front {{card.IMDB_Id}}
                 </div>
                 <div class="face back cover" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
                 <div class="face back tags" ng-if="card.type =='tags'">
