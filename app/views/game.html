@@ -62,7 +62,13 @@
             <div class="face front">
               Front
             </div>
-            <div class="face back" background-image="game.flippedCards[0].Cover_Url"></div>
+            <div class="face back cover" ng-if="game.flippedCards[0].type =='cover'" background-image="game.flippedCards[0].Cover_Url"></div>
+            <div class="face back tags" ng-if="game.flippedCards[0].type =='tags'">
+              <p>{{game.flippedCards[0].Tags[0]}}</p>
+              <p>{{game.flippedCards[0].Tags[1]}}</p>
+              <p>{{game.flippedCards[0].Tags[2]}}</p>
+              <p>{{game.flippedCards[0].Tags[3]}}</p>
+            </div>
           </div>
         </div>
         <div class="big-card flip" aspect-ratio aspect-ratio-diff="30">
@@ -70,7 +76,13 @@
             <div class="face front">
               Front
             </div>
-            <div class="face back" background-image="game.flippedCards[1].Cover_Url"></div>
+            <div class="face back cover" ng-if="game.flippedCards[1].type =='cover'"  background-image="game.flippedCards[1].Cover_Url"></div>
+            <div class="face back tags" ng-if="game.flippedCards[1].type =='tags'">
+              <p>{{game.flippedCards[1].Tags[0]}}</p>
+              <p>{{game.flippedCards[1].Tags[1]}}</p>
+              <p>{{game.flippedCards[1].Tags[2]}}</p>
+              <p>{{game.flippedCards[1].Tags[3]}}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -86,8 +98,8 @@
                 <div class="face front">
                   Front
                 </div>
-                <div class="face back" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
-                <div class="face back 2" ng-if="card.type =='tags'">
+                <div class="face back cover" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
+                <div class="face back tags" ng-if="card.type =='tags'">
                   <p>{{card.Tags[0]}}</p>
                   <p>{{card.Tags[1]}}</p>
                   <p>{{card.Tags[2]}}</p>
