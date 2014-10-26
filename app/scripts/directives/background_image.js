@@ -16,15 +16,17 @@ angular.module('movieMemoryApp')
       link: function(scope, element) {
         scope.$watch('backgroundImage', function () {
           var src = scope.backgroundImage;
-          var img = $document[0].createElement('img');
-          img.onload = function() {
-            element.css({
-              backgroundImage: 'url(' + this.src + ')',
-              backgroundSize: 'cover'
-            });
-            element.addClass('loaded');
-          };
-          img.src = src;
+          if (src) {
+            var img = $document[0].createElement('img');
+            img.onload = function() {
+              element.css({
+                backgroundImage: 'url(' + this.src + ')',
+                backgroundSize: 'cover'
+              });
+              element.addClass('loaded');
+            };
+            img.src = src;
+          }
         });
       }
     };

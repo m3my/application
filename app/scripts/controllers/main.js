@@ -10,6 +10,9 @@
 angular.module('movieMemoryApp')
   .controller('MainCtrl', function ($scope, Game, $location, $firebase) {
 
+    $scope.app.error = '';
+    $scope.app.flippedCards = [];
+
     function createGame(movies) {
       var n = movies.length;
       var size = 12
@@ -19,11 +22,11 @@ angular.module('movieMemoryApp')
       var tagscards = [];
       for (var i = 0; i < size;++i) {
         var movie = movies[Math.floor(Math.random() * n)];
-        covercards[i] = movie;
+        covercards[i] = angular.copy(movie);
         covercards[i].type = 'cover';
         covercards[i].status = 'fresh';
 
-        tagscards[i] = movie;
+        tagscards[i] = angular.copy(movie);
         tagscards[i].type = 'tags';
         tagscards[i].status = 'fresh';
       }
