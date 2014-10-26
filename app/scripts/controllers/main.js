@@ -15,13 +15,13 @@ angular.module('movieMemoryApp')
 
     function createGame(movies) {
       var n = movies.length;
-      var size = 3;
+      var size = 12;
 
       var moviesample = _.sample(movies,size);
       var covercards = [];
       var tagscards = [];
       for (var i = 0; i < size;++i) {
-        var movie = movies[Math.floor(Math.random() * n)];
+        var movie = moviesample[i];
         covercards[i] = angular.copy(movie);
         covercards[i].type = 'cover';
         covercards[i].status = 'fresh';
