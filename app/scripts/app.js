@@ -22,7 +22,7 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'views/game.html', // skip start page and button hit
         controller: 'MainCtrl'
       })
       .when('/games/:id', {

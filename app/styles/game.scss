@@ -1,4 +1,6 @@
 $mmyGameTopBarHeight: 88px;
+$mmyCardMargin: 20px;
+$mmyPreviewCardMargin: 30px;
 
 .mmyGame {
   background-image: url(../images/memory_movie_bg.png);
@@ -106,7 +108,7 @@ $mmyGameTopBarHeight: 88px;
     > .mmyCards {
       font-size: 0;
       height: 100%;
-      padding: 15px 0 15px 0;
+      padding: $mmyPreviewCardMargin - $mmyCardMargin/2 0 $mmyPreviewCardMargin - $mmyCardMargin/2 0;
       text-align: center;
     }
   }
@@ -145,6 +147,27 @@ $mmyGameTopBarHeight: 88px;
 
   .mmyCardCol {
     float: left;
-    padding: 15px 15px 15px 15px;
+    padding: $mmyCardMargin/2;
+  }
+}
+
+.mmyAlerts {
+  color: #533231;
+  z-index: 10;
+  display: table;
+  height: 100%;
+  width: 40%;
+  font-size: 14px;
+  position: absolute;
+  left: 8%;
+
+  button {
+    float: left;
+    padding: 0 10px 0 0 ;
+  }
+
+  > div {
+    display: table-cell;
+    vertical-align: middle;
   }
 }
