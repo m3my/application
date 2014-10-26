@@ -10,6 +10,8 @@
 angular.module('movieMemoryApp')
   .controller('MainCtrl', function ($scope, Game, $location, $firebase) {
 
+    $scope.app.error = '';
+
     function createGame(movies) {
       var n = movies.length;
       var cards = [];
