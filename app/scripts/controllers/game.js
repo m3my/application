@@ -53,14 +53,19 @@ angular.module('movieMemoryApp')
     $scope.$watch('app.flippedCards.length', function (length) {
       if (length == 2 && $scope.game.activePlayer == $scope.user.id) {
           if ($scope.app.flippedCards[0].IMDB_Id == $scope.app.flippedCards[1].IMDB_Id) {
-            _.each($scope.app.flippedCards, function (item) {
+            $timeout(function (argument) {
+              _.each($scope.app.flippedCards, function (item) {
                 item.status = 'scored';
               });
-            _.where($scope.game.players, { id: $scope.user.id })[0].score++;
+              _.where($scope.game.players, { id: $scope.user.id })[0].score++;
+            }, 2000)
+
           } else {
-            _.each($scope.app.flippedCards, function (item) {
-              item.status = 'fresh';
-            });
+            $timeout(function (argument) {
+              _.each($scope.app.flippedCards, function (item) {
+                item.status = 'fresh';
+              });
+            }, 2000)
             for (var i = 0; i < $scope.game.players.length; ++i) {
               if ($scope.game.players[i].id != $scope.user.id) {
                 $scope.game.activePlayer = $scope.game.players[i].id;
