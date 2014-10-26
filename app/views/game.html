@@ -2,20 +2,21 @@
   <!-- Game top bar -->
   <div class="col-sm-12 mmyGameTopBar">
     <div class="row">
-      <div class="col-sm-2" >
+      <div class="col-sm-1" >
         <div class="mmyBackBtn">
           <div>
             <a href="#" class="mmyBtn" role="button">Back</a>
           </div>
         </div>
       </div>
-      <div class="col-sm-4" >
+      <div class="col-sm-2" >
         <div class="alert alert-error" ng-if="app.error"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.error"></span></div>
+        <div class="alert alert-warning" ng-if="game.players.length<2"><button type="button" class="close" data-dismiss="alert">&times;</button>Send your friends & enemies this link to join:<br><strong>{{location}}</strong></div>
         <div class="alert alert-warning" ng-if="app.warning"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.warning"></span></div>
         <div class="alert alert-information" ng-if="app.information"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.information"></span></div>
         <div class="alert alert-success" ng-if="app.success"><button type="button" class="close" data-dismiss="alert">&times;</button><span ng-bind="app.success"></span></div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-9">
         <div class="mmyCenterWrapper">
           <div class="mmyGameStatusBar">
             <div class="mmyScore">
@@ -75,8 +76,8 @@
                   <p>{{app.flippedCards[0].Tags[1]}}</p>
                   <p>{{app.flippedCards[0].Tags[2]}}</p>
                   <p>{{app.flippedCards[0].Tags[3]}}</p>
-                </div>   
-              </div>           
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -92,8 +93,8 @@
                   <p>{{app.flippedCards[0].Tags[1]}}</p>
                   <p>{{app.flippedCards[0].Tags[2]}}</p>
                   <p>{{app.flippedCards[0].Tags[3]}}</p>
-                </div>   
-              </div>           
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -101,8 +102,7 @@
 
       <!-- Card preview -->
       <div class="col-sm-9 mmyCards">
-        <div class="mmyCardRow" ng-repeat="row in app.chunkedCards">
-          <div class="mmyCardCol" ng-repeat="card in row">
+        <div class="mmyCardRow" ng-repeat="row in app.chunkedCards"><div class="mmyCardCol" ng-repeat="card in row">
             <div class="flip mmyCard" set-card-size>
               <div class="card"
                 ng-class="{ flipped: card.status == 'flipped' }"
