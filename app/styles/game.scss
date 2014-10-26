@@ -74,6 +74,10 @@ $mmyPreviewCardMargin: 30px;
     min-width: 120px;
     width: 120px;
   }
+  .mmyPlayer.isActive {
+    text-decoration: underline;
+  }
+
 
   .mmyTimer {
     min-width: 60px;
