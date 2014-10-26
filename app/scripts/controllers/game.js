@@ -8,8 +8,9 @@
  * Controller of the movieMemoryApp
  */
 angular.module('movieMemoryApp')
-  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout) {
+  .controller('GameCtrl', function ($scope, $routeParams, $firebase, $timeout, $location) {
 
+    $scope.location = $location.absUrl();
     $scope.app.error = '';
     $scope.app.warning  = '';
     $scope.app.information = '';
@@ -33,10 +34,7 @@ angular.module('movieMemoryApp')
         }
       }, true);
 
-      if (($scope.game.players = $scope.game.players || []).length==0) {
-          $scope.app.warning = 'You are the only player. Invite more players by sending them the URL.';
-      }
-      if ($scope.game.players.length < 2) {
+      if (($scope.game.players = $scope.game.players || []).length < 2) {
           $scope.game.players.push(angular.extend($scope.user, { score: 0 }));
         } else {
           $scope.app.error = 'Sorry, all 2 seats are already taken :(';
