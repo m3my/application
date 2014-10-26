@@ -13,16 +13,6 @@ angular.module('movieMemoryApp')
     $scope.app.error = '';
     $scope.app.flippedCards = [];
 
-
-
-    // var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id + '/players');
-    // $scope.players = $firebase(ref).$asArray();
-
-    // $scope.players.$loaded()
-    //   .then(function (x) {
-
-    //   });
-
     var ref = new Firebase('https://popping-heat-9121.firebaseio.com/games/' + $routeParams.id);
     $firebase(ref).$asObject().$bindTo($scope, 'game').then(function() {
       $scope.$watch('game.cards', function (cards) {
