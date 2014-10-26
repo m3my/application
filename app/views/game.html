@@ -99,7 +99,7 @@
                       <p>{{app.flippedCards[0].Tags[3]}}</p>
                     </div>
                   </div>
-                </div>                                    
+                </div>
               </div>
             </div>
           </div>
@@ -149,11 +149,11 @@
               <div class="card"
                 ng-class="{ flipped: card.status == 'flipped' }"
                 ng-click="flipCard(card)"
-                ng-if="card.status!='scored'">
+                ng-show="card.status!='scored'">
                 <div class="face front mmyCardBorder">
                 </div>
-                <div class="face back cover mmyCardBorder" ng-if="card.type =='cover'" background-image="card.Cover_Url"></div>
-                <div class="face back tags mmyCardBorder mmyTagCardSmall" ng-if="card.type =='tags'">
+                <div class="face back cover mmyCardBorder" ng-show="card.type =='cover'" background-image="card.Cover_Url"></div>
+                <div class="face back tags mmyCardBorder mmyTagCardSmall" ng-show="card.type =='tags'">
                   <div>
                     <div>
                       <p>{{card.Tags[0]}}</p>
@@ -171,7 +171,7 @@
                       <p>{{card.Tags[2]}}</p>
                     </div>
                     <span></span>
-                  </div>                                    
+                  </div>
                   <div>
                     <div>
                       <p>{{card.Tags[3]}}</p>
