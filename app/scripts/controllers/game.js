@@ -34,32 +34,40 @@ angular.module('movieMemoryApp')
         }
       }, true);
 
-      if (($scope.game.players = $scope.game.players || []).length < 2) {
+        if (($scope.game.players = $scope.game.players || []).length < 2) {
           $scope.game.players.push(angular.extend($scope.user, { score: 0 }));
+          if ($scope.game.players.length==2) {
+            $scope.game.activePlayer = $scope.user.id;
+          }
         } else {
           $scope.app.error = 'Sorry, all 2 seats are already taken :(';
         }
     });
 
     $scope.flipCard = function (card) {
-      card.status = 'flipped';
+      if ($scope.game.activePlayer == $scope.user.id) {
+        card.status = 'flipped';
+      }
     };
 
     $scope.$watch('app.flippedCards.length', function (length) {
-      if (length == 2) {
-        $timeout(function (argument) {
-
+      if (length == 2 && $scope.game.activePlayer == $scope.user.id) {
           if ($scope.app.flippedCards[0].IMDB_Id == $scope.app.flippedCards[1].IMDB_Id) {
             _.each($scope.app.flippedCards, function (item) {
-              item.status = 'scored';
-            });
+                item.status = 'scored';
+              });
             _.where($scope.game.players, { id: $scope.user.id })[0].score++;
           } else {
-             _.each($scope.app.flippedCards, function (item) {
+            _.each($scope.app.flippedCards, function (item) {
               item.status = 'fresh';
             });
+            for (var i = 0; i < $scope.game.players.length; ++i) {
+              if ($scope.game.players[i].id != $scope.user.id) {
+                $scope.game.activePlayer = $scope.game.players[i].id;
+              }
+            }
           }
-        }, 2000)
+
       }
     })
 
