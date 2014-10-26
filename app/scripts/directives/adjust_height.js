@@ -7,12 +7,26 @@
  * # adjustHeight
  */
 angular.module('movieMemoryApp')
-  .directive('adjustHeight', function () {
+  .directive('adjustHeight', function ($window, $timeout) {
     return {
-      template: '<div></div>',
-      restrict: 'E',
+      restrict: 'A',
       link: function postLink(scope, element, attrs) {
-        element.text('this is the adjustHeight directive');
+        
+        var setHeight = function() {
+        	var height = $window.innerHeight - $('.mmyGameTopBar').height();
+
+        	return element.css('height', height + 'px');
+        }
+
+  		$timeout(setHeight);
+
+        angular.element($window).on('resize', setHeight);
+
+        var cleanup = function() {
+          return angular.element($window).off('resize', setHeight);
+        };
+
+        element.on('$destroy', cleanup);
       }
     };
   });

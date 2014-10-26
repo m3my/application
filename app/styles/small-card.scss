@@ -29,7 +29,7 @@
 .flip .card .front {
   position: absolute;
   z-index: 1;
-  background: black;
+  background-image: url(../images/card_bg.png);
   color: white;
   cursor: pointer;
 }
